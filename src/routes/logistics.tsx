@@ -24,7 +24,7 @@ function Logistics() {
         eyebrow="Supply chain & logistics"
         title={<>Port to plant, <span className="text-copper">coordinated.</span></>}
         text="Road and sea logistics, shipment planning, customs coordination and delivery management — aligned with your production schedule."
-        visual={<img src={port} alt="Bulk mineral port at dusk" width={1600} height={912} className="h-full w-full rounded-xl object-cover shadow-deep" />}
+        visual={<img src={port} alt="Shaz team on the deck of a bulk vessel at the quay" width={1600} height={912} className="h-full w-full rounded-xl object-cover shadow-deep" />}
       />
       <section className="mx-auto max-w-7xl px-6 py-24">
         <SectionHead eyebrow="Shipment stages" title="Every movement, planned." />
