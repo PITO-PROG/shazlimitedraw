@@ -95,8 +95,8 @@ export function photosForPage(pathname: string): readonly SitePhoto[] {
   if (pathname === '/') return sitePhotos;
   const vessel = sitePhotos.filter(p => p.category === 'Vessel inspection');
   if (pathname.startsWith('/products')) return [sitePhotos[0], sitePhotos[1], sitePhotos[2], sitePhotos[4], sitePhotos[9]];
-  if (pathname === '/quality') return [...vessel.slice(6), sitePhotos[0], sitePhotos[9]];
+  if (pathname === '/quality') return [...sitePhotos.filter(p => p.category === 'Supplier visit — Devki yard'), ...vessel.slice(6), sitePhotos[0], sitePhotos[9]];
   if (pathname === '/industries') return [sitePhotos[5], sitePhotos[6], sitePhotos[3]];
-  if (pathname === '/logistics' || pathname === '/services') return sitePhotos.filter(p => p.category === 'Vessel inspection' || p.category === 'Weighbridge — Mtwara yard' || p.category === 'Loading at Mtwara Port');
+  if (pathname === '/logistics' || pathname === '/services') return sitePhotos.filter(p => p.category === 'Vessel inspection' || p.category === 'Weighbridge — Mtwara yard' || p.category === 'Loading at Mtwara Port' || p.category === 'MV Alice — New Berth, Mtwara' || p.category === 'Lunga Lunga yard — HoroHoro border');
   return [sitePhotos[8], sitePhotos[7], sitePhotos[9]];
 }
