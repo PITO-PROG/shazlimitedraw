@@ -17,6 +17,13 @@ import v_crane_side from '@/assets/vessel/crane-side.jpg';
 import v_hatch_climb from '@/assets/vessel/hatch-climb.jpg';
 import v_quay_deck from '@/assets/vessel/quay-deck.jpg';
 import v_master_meeting from '@/assets/vessel/master-meeting.jpg';
+import wb_truck from '@/assets/mtwara/weighbridge-1.webp.asset.json';
+import wb_office from '@/assets/mtwara/weighbridge-2.webp.asset.json';
+import wb_documented from '@/assets/mtwara/weighbridge-3.webp.asset.json';
+import ld_berth from '@/assets/mtwara/loading-1.webp.asset.json';
+import ld_operation from '@/assets/mtwara/loading-2.webp.asset.json';
+import ld_alongside from '@/assets/mtwara/loading-3.webp.asset.json';
+import ld_stern from '@/assets/mtwara/loading-4.webp.asset.json';
 
 export const sitePhotos = [
   { src: crystals, title: 'Clear crystal formations', category: 'Minerals', alt: 'Transparent crystal cluster with natural inclusions' },
@@ -38,6 +45,13 @@ export const sitePhotos = [
   { src: v_crane_side, title: 'Hatch inspection', category: 'Vessel inspection', alt: 'Inspector on the hatch coaming with port cranes behind' },
   { src: v_hold_ladder, title: 'Accessing the hold', category: 'Vessel inspection', alt: 'Two team members climbing down to inspect the cargo holds' },
   { src: v_hold_floor, title: 'Hold cleanliness check', category: 'Vessel inspection', alt: 'Empty cargo hold floor inspected for cleanliness before loading' },
+  { src: wb_truck.url, title: 'Truck on the weighbridge', category: 'Weighbridge — Mtwara yard', alt: 'Loaded haul truck on the weighbridge beside the yard office, with mineral stockpiles behind' },
+  { src: wb_office.url, title: 'The weighbridge office', category: 'Weighbridge — Mtwara yard', alt: 'Weighbridge office at the Mtwara yard with trucks and mineral stockpiles behind' },
+  { src: wb_documented.url, title: 'Weighed and documented', category: 'Weighbridge — Mtwara yard', alt: 'Haul trucks queuing at the weighbridge for weighing and documentation' },
+  { src: ld_berth.url, title: 'MV Alice at the berth', category: 'Loading at Mtwara Port', alt: 'Bulk carrier MV Alice berthed at Mtwara Port with harbour cranes and haul trucks on the quay' },
+  { src: ld_operation.url, title: 'Loading operation under way', category: 'Loading at Mtwara Port', alt: 'Ongoing loading operation at Mtwara Port with the vessel, cranes and a queue of trucks' },
+  { src: ld_alongside.url, title: 'Alongside at Mtwara', category: 'Loading at Mtwara Port', alt: 'Full side view of the bulk carrier alongside the quay at Mtwara Port' },
+  { src: ld_stern.url, title: 'MV Alice, Panama', category: 'Loading at Mtwara Port', alt: 'Stern of the bulk carrier MV Alice of Panama moored at Mtwara Port' },
 ] as const;
 
 export type SitePhoto = (typeof sitePhotos)[number];
@@ -47,6 +61,6 @@ export function photosForPage(pathname: string): readonly SitePhoto[] {
   if (pathname.startsWith('/products')) return [sitePhotos[0], sitePhotos[1], sitePhotos[2], sitePhotos[4], sitePhotos[9]];
   if (pathname === '/quality') return [...vessel.slice(6), sitePhotos[0], sitePhotos[9]];
   if (pathname === '/industries') return [sitePhotos[5], sitePhotos[6], sitePhotos[3]];
-  if (pathname === '/logistics' || pathname === '/services') return [...vessel, sitePhotos[7], sitePhotos[8]];
+  if (pathname === '/logistics' || pathname === '/services') return sitePhotos.filter(p => p.category === 'Vessel inspection' || p.category === 'Weighbridge — Mtwara yard' || p.category === 'Loading at Mtwara Port');
   return [sitePhotos[8], sitePhotos[7], sitePhotos[9]];
 }
