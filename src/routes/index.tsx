@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from 'react';
 import { Maximize, ArrowUpRight, Globe2, ShieldCheck, Truck } from 'lucide-react';
 import { HeroSlideshow } from '@/components/site/HeroSlideshow';
+import { HighlightStrip, OnTheGround } from '@/components/site/HomeHighlights';
 import { capabilities, industries, insights, faqs } from "@/lib/content";
 import { CTA, Reveal, SectionHead } from "@/components/site/ui";
 import { Button } from '@/components/ui/button';
@@ -42,7 +43,9 @@ function Home() {
   return (
     <>
       <HeroSlideshow />
+      <HighlightStrip />
       <div id="mineral-collection"><MineralDiscovery /></div>
+      <OnTheGround />
 
       <section className="who-section border-y border-border bg-background">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
