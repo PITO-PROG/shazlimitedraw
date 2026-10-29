@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import port from "@/assets/port.jpg";
-import weighbridgeFilm from "@/assets/mtwara/weighbridge-video.mp4.asset.json";
+import weighbridgeFilm from "@/assets/mtwara/weighbridge-video.mp4";
 import { CTA, PageHero, Reveal, SectionHead } from "@/components/site/ui";
 import { RegionMap, SupplyRoute } from "@/components/site/widgets";
 
