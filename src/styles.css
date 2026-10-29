@@ -564,3 +564,28 @@ main > section:has(form) input[type="file"] { max-width: 100%; }
 .highlight-item:hover, .highlight-item:focus-visible { background: color-mix(in oklab, var(--background) 6%, transparent); }
 @media (max-width: 767px) { .highlight-item { border-left: 0; border-top: 1px solid color-mix(in oklab, var(--background) 15%, transparent); } }
 .story-badge { position: absolute; left: 1rem; bottom: 1rem; padding: .5rem .9rem; border-radius: .375rem; background: var(--primary); color: var(--primary-foreground); font-size: .8rem; font-weight: 600; }
+
+/* Light corporate system (inspired by Glencore / Vitol / Anglo American): no black backgrounds */
+:root {
+  --stage: oklch(0.965 0.006 240);
+  --stage-raised: oklch(1 0 0);
+  --stage-border: oklch(0.25 0.03 250 / 14%);
+  --stage-muted: oklch(0.45 0.02 250);
+  --hero-shade: oklch(0.26 0.05 255 / 78%);
+  --hero-shade-clear: oklch(0.26 0.05 255 / 12%);
+  --film-shade: oklch(0.26 0.05 255 / 72%);
+  --stage-scrim: linear-gradient(0deg, oklch(0.26 0.05 255 / 80%), oklch(0.26 0.05 255 / 0%) 70%);
+  --hero-film-scrim: linear-gradient(90deg, oklch(0.26 0.05 255 / 70%), oklch(0.26 0.05 255 / 5%) 75%), linear-gradient(0deg, oklch(0.26 0.05 255 / 45%), transparent 40%);
+  --shadow-deep: 0 24px 50px -24px oklch(0.3 0.05 255 / 28%);
+}
+.site-footer, .mineral-discovery, .industries-section {
+  --foreground: oklch(0.2 0.02 250);
+  --card-foreground: oklch(0.2 0.02 250);
+  --muted-foreground: var(--stage-muted);
+  --stone: var(--stage-muted);
+  color: var(--foreground);
+}
+.site-footer { background-image: none; border-top: 3px solid var(--primary); }
+.mineral-discovery .group { background: var(--card); box-shadow: var(--shadow-deep); }
+.industries-section .industry-panel h3 { color: var(--on-photo); }
+.product-hero { background: var(--stage); }
