@@ -24,6 +24,24 @@ import ld_berth from '@/assets/mtwara/loading-1.webp.asset.json';
 import ld_operation from '@/assets/mtwara/loading-2.webp.asset.json';
 import ld_alongside from '@/assets/mtwara/loading-3.webp.asset.json';
 import ld_stern from '@/assets/mtwara/loading-4.webp.asset.json';
+import al_approach from '@/assets/mtwara/alice-1.webp.asset.json';
+import al_berthed from '@/assets/mtwara/alice-2.webp.asset.json';
+import al_bow from '@/assets/mtwara/alice-3.webp.asset.json';
+import al_alongside from '@/assets/mtwara/alice-4.webp.asset.json';
+import al_crane from '@/assets/mtwara/alice-5.webp.asset.json';
+import al_crew from '@/assets/mtwara/alice-6.webp.asset.json';
+import ll_border_post from '@/assets/yards/lungalunga-1.webp.asset.json';
+import ll_screener from '@/assets/yards/lungalunga-2.webp.asset.json';
+import ll_stockpile from '@/assets/yards/lungalunga-3.webp.asset.json';
+import ll_loader from '@/assets/yards/lungalunga-4.webp.asset.json';
+import ll_shed from '@/assets/yards/lungalunga-5.webp.asset.json';
+import ll_yard from '@/assets/yards/lungalunga-6.webp.asset.json';
+import dv_conveyor from '@/assets/yards/devki-1.webp.asset.json';
+import dv_pointing from '@/assets/yards/devki-2.webp.asset.json';
+import dv_walking from '@/assets/yards/devki-3.webp.asset.json';
+import dv_group from '@/assets/yards/devki-4.webp.asset.json';
+import dv_piles from '@/assets/yards/devki-5.webp.asset.json';
+import dv_inspect from '@/assets/yards/devki-6.webp.asset.json';
 
 export const sitePhotos = [
   { src: crystals, title: 'Clear crystal formations', category: 'Minerals', alt: 'Transparent crystal cluster with natural inclusions' },
@@ -52,6 +70,24 @@ export const sitePhotos = [
   { src: ld_operation.url, title: 'Loading operation under way', category: 'Loading at Mtwara Port', alt: 'Ongoing loading operation at Mtwara Port with the vessel, cranes and a queue of trucks' },
   { src: ld_alongside.url, title: 'Alongside at Mtwara', category: 'Loading at Mtwara Port', alt: 'Full side view of the bulk carrier alongside the quay at Mtwara Port' },
   { src: ld_stern.url, title: 'MV Alice, Panama', category: 'Loading at Mtwara Port', alt: 'Stern of the bulk carrier MV Alice of Panama moored at Mtwara Port' },
+  { src: al_approach.url, title: 'Approaching Mtwara', category: 'MV Alice — New Berth, Mtwara', alt: 'Bulk carrier MV Alice approaching Mtwara, seen from the shoreline' },
+  { src: al_berthed.url, title: 'Berthed at the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'MV Alice berthed at the New Berth in Mtwara with mooring lines ashore' },
+  { src: al_bow.url, title: 'Bow at the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Bow of the MV Alice towering over the quay at the New Berth' },
+  { src: al_alongside.url, title: 'Alongside the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'Full side view of MV Alice alongside the New Berth quay at Mtwara' },
+  { src: al_crane.url, title: 'Harbour crane on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Mobile harbour crane on the quay with the team standing by' },
+  { src: al_crew.url, title: 'Team on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Team members on the quay beside the berthed MV Alice' },
+  { src: ll_border_post.url, title: 'HoroHoro One Stop Border Post', category: 'Lunga Lunga yard — HoroHoro border', alt: 'HoroHoro One Stop Border Post building near the Lunga Lunga yard' },
+  { src: ll_screener.url, title: 'Screening plant on site', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Mobile screening plant standing on the cleared Lunga Lunga yard' },
+  { src: ll_stockpile.url, title: 'First stockpiles', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Screener working a mineral stockpile at the Lunga Lunga yard' },
+  { src: ll_loader.url, title: 'Wheel loader at work', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Wheel loader working the surfaced yard at Lunga Lunga' },
+  { src: ll_shed.url, title: 'Yard facilities', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Storage shed and surfaced pads at the Lunga Lunga yard' },
+  { src: ll_yard.url, title: 'The Lunga Lunga yard', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Cleared and surfaced yard at Lunga Lunga near the HoroHoro border' },
+  { src: dv_conveyor.url, title: 'Walking the stockpiles', category: 'Supplier visit — Devki yard', alt: 'Team walking past mineral stockpiles and conveyors at the Devki yard' },
+  { src: dv_pointing.url, title: 'Discussing the ore', category: 'Supplier visit — Devki yard', alt: 'Team member pointing across a stockpile while discussing the material' },
+  { src: dv_walking.url, title: 'Yard walkthrough', category: 'Supplier visit — Devki yard', alt: 'Team walking between dark mineral stockpiles at the Devki yard' },
+  { src: dv_group.url, title: 'Under the conveyors', category: 'Supplier visit — Devki yard', alt: 'Group walking beneath the conveyor gantries at the Devki yard' },
+  { src: dv_piles.url, title: 'Inspecting the piles', category: 'Supplier visit — Devki yard', alt: 'Team in high-visibility vests inspecting stockpiles at the Devki yard' },
+  { src: dv_inspect.url, title: 'With the Devki team', category: 'Supplier visit — Devki yard', alt: 'Shaz team member walking with a Devki staff member in a branded vest' },
 ] as const;
 
 export type SitePhoto = (typeof sitePhotos)[number];
@@ -59,8 +95,8 @@ export function photosForPage(pathname: string): readonly SitePhoto[] {
   if (pathname === '/') return sitePhotos;
   const vessel = sitePhotos.filter(p => p.category === 'Vessel inspection');
   if (pathname.startsWith('/products')) return [sitePhotos[0], sitePhotos[1], sitePhotos[2], sitePhotos[4], sitePhotos[9]];
-  if (pathname === '/quality') return [...vessel.slice(6), sitePhotos[0], sitePhotos[9]];
+  if (pathname === '/quality') return [...sitePhotos.filter(p => p.category === 'Supplier visit — Devki yard'), ...vessel.slice(6), sitePhotos[0], sitePhotos[9]];
   if (pathname === '/industries') return [sitePhotos[5], sitePhotos[6], sitePhotos[3]];
-  if (pathname === '/logistics' || pathname === '/services') return sitePhotos.filter(p => p.category === 'Vessel inspection' || p.category === 'Weighbridge — Mtwara yard' || p.category === 'Loading at Mtwara Port');
+  if (pathname === '/logistics' || pathname === '/services') return sitePhotos.filter(p => p.category === 'Vessel inspection' || p.category === 'Weighbridge — Mtwara yard' || p.category === 'Loading at Mtwara Port' || p.category === 'MV Alice — New Berth, Mtwara' || p.category === 'Lunga Lunga yard — HoroHoro border');
   return [sitePhotos[8], sitePhotos[7], sitePhotos[9]];
 }
