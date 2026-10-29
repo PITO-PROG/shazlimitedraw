@@ -14,4 +14,9 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  it.each(['/about', '/leadership', '/why', '/sustainability', '/products', '/services', '/industries', '/logistics', '/quality', '/insights', '/faq', '/contact', '/products/thermal-coal', '/products/clinker', '/products/iron-ore', '/products/gypsum', '/products/lithium', '/products/limestone'])('keeps %s reachable', path => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const match = router.matchRoutes(path).at(-1);
+    expect(match?.routeId).toBe(path.startsWith('/products/') ? '/products/$slug' : path === '/products' ? '/products/' : path);
+  });
 });

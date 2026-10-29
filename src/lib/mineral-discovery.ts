@@ -1,0 +1,8 @@
+export const mineralDetails = [
+  { formula: "Carbon-rich sedimentary rock", structure: "Layered · brittle fracture", elements: ["Carbon", "Mineral matter", "Volatiles"], note: "Composition varies by deposit; calorific value, ash and sulphur are verified by assay." },
+  { formula: "Calcium silicate phases", structure: "Kiln-formed · porous nodules", elements: ["Calcium", "Silicon", "Aluminium", "Iron"], note: "Clinker is a manufactured material. C₃S, C₂S and free lime are confirmed by testing." },
+  { formula: "Hematite Fe₂O₃ / magnetite Fe₃O₄", structure: "Massive · metallic to earthy", elements: ["Iron", "Oxygen", "Gangue minerals"], note: "Iron-bearing phases and Fe grade vary by source." },
+  { formula: "CaSO₄ · 2H₂O", structure: "Monoclinic · perfect cleavage", elements: ["Calcium", "Sulphur", "Oxygen", "Water"], note: "Gypsum is a hydrated calcium sulphate; purity and moisture require sample verification." },
+  { formula: "Spodumene · LiAlSi₂O₆", structure: "Monoclinic · prismatic crystals", elements: ["Lithium", "Aluminium", "Silicon", "Oxygen"], note: "Spodumene is one lithium-bearing mineral; supplied ore grade is confirmed by Li₂O assay." },
+  { formula: "Calcite-rich · CaCO₃", structure: "Sedimentary · layered matrix", elements: ["Calcium", "Carbon", "Oxygen"], note: "Limestone composition varies; CaCO₃, MgO and silica are confirmed against the required specification." },
+] as const;
