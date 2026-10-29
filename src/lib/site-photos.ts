@@ -17,31 +17,31 @@ import v_crane_side from '@/assets/vessel/crane-side.jpg';
 import v_hatch_climb from '@/assets/vessel/hatch-climb.jpg';
 import v_quay_deck from '@/assets/vessel/quay-deck.jpg';
 import v_master_meeting from '@/assets/vessel/master-meeting.jpg';
-import wb_truck from '@/assets/mtwara/weighbridge-1.webp.asset.json';
-import wb_office from '@/assets/mtwara/weighbridge-2.webp.asset.json';
-import wb_documented from '@/assets/mtwara/weighbridge-3.webp.asset.json';
-import ld_berth from '@/assets/mtwara/loading-1.webp.asset.json';
-import ld_operation from '@/assets/mtwara/loading-2.webp.asset.json';
-import ld_alongside from '@/assets/mtwara/loading-3.webp.asset.json';
-import ld_stern from '@/assets/mtwara/loading-4.webp.asset.json';
-import al_approach from '@/assets/mtwara/alice-1.webp.asset.json';
-import al_berthed from '@/assets/mtwara/alice-2.webp.asset.json';
-import al_bow from '@/assets/mtwara/alice-3.webp.asset.json';
-import al_alongside from '@/assets/mtwara/alice-4.webp.asset.json';
-import al_crane from '@/assets/mtwara/alice-5.webp.asset.json';
-import al_crew from '@/assets/mtwara/alice-6.webp.asset.json';
-import ll_border_post from '@/assets/yards/lungalunga-1.webp.asset.json';
-import ll_screener from '@/assets/yards/lungalunga-2.webp.asset.json';
-import ll_stockpile from '@/assets/yards/lungalunga-3.webp.asset.json';
-import ll_loader from '@/assets/yards/lungalunga-4.webp.asset.json';
-import ll_shed from '@/assets/yards/lungalunga-5.webp.asset.json';
-import ll_yard from '@/assets/yards/lungalunga-6.webp.asset.json';
-import dv_conveyor from '@/assets/yards/devki-1.webp.asset.json';
-import dv_pointing from '@/assets/yards/devki-2.webp.asset.json';
-import dv_walking from '@/assets/yards/devki-3.webp.asset.json';
-import dv_group from '@/assets/yards/devki-4.webp.asset.json';
-import dv_piles from '@/assets/yards/devki-5.webp.asset.json';
-import dv_inspect from '@/assets/yards/devki-6.webp.asset.json';
+import wb_truck from '@/assets/mtwara/weighbridge-1.webp';
+import wb_office from '@/assets/mtwara/weighbridge-2.webp';
+import wb_documented from '@/assets/mtwara/weighbridge-3.webp';
+import ld_berth from '@/assets/mtwara/loading-1.webp';
+import ld_operation from '@/assets/mtwara/loading-2.webp';
+import ld_alongside from '@/assets/mtwara/loading-3.webp';
+import ld_stern from '@/assets/mtwara/loading-4.webp';
+import al_approach from '@/assets/mtwara/alice-1.webp';
+import al_berthed from '@/assets/mtwara/alice-2.webp';
+import al_bow from '@/assets/mtwara/alice-3.webp';
+import al_alongside from '@/assets/mtwara/alice-4.webp';
+import al_crane from '@/assets/mtwara/alice-5.webp';
+import al_crew from '@/assets/mtwara/alice-6.webp';
+import ll_border_post from '@/assets/yards/lungalunga-1.webp';
+import ll_screener from '@/assets/yards/lungalunga-2.webp';
+import ll_stockpile from '@/assets/yards/lungalunga-3.webp';
+import ll_loader from '@/assets/yards/lungalunga-4.webp';
+import ll_shed from '@/assets/yards/lungalunga-5.webp';
+import ll_yard from '@/assets/yards/lungalunga-6.webp';
+import dv_conveyor from '@/assets/yards/devki-1.webp';
+import dv_pointing from '@/assets/yards/devki-2.webp';
+import dv_walking from '@/assets/yards/devki-3.webp';
+import dv_group from '@/assets/yards/devki-4.webp';
+import dv_piles from '@/assets/yards/devki-5.webp';
+import dv_inspect from '@/assets/yards/devki-6.webp';
 
 export const sitePhotos = [
   { src: crystals, title: 'Clear crystal formations', category: 'Minerals', alt: 'Transparent crystal cluster with natural inclusions' },
@@ -63,31 +63,31 @@ export const sitePhotos = [
   { src: v_crane_side, title: 'Hatch inspection', category: 'Vessel inspection', alt: 'Inspector on the hatch coaming with port cranes behind' },
   { src: v_hold_ladder, title: 'Accessing the hold', category: 'Vessel inspection', alt: 'Two team members climbing down to inspect the cargo holds' },
   { src: v_hold_floor, title: 'Hold cleanliness check', category: 'Vessel inspection', alt: 'Empty cargo hold floor inspected for cleanliness before loading' },
-  { src: wb_truck.url, title: 'Truck on the weighbridge', category: 'Weighbridge — Mtwara yard', alt: 'Loaded haul truck on the weighbridge beside the yard office, with mineral stockpiles behind' },
-  { src: wb_office.url, title: 'The weighbridge office', category: 'Weighbridge — Mtwara yard', alt: 'Weighbridge office at the Mtwara yard with trucks and mineral stockpiles behind' },
-  { src: wb_documented.url, title: 'Weighed and documented', category: 'Weighbridge — Mtwara yard', alt: 'Haul trucks queuing at the weighbridge for weighing and documentation' },
-  { src: ld_berth.url, title: 'MV Alice at the berth', category: 'Loading at Mtwara Port', alt: 'Bulk carrier MV Alice berthed at Mtwara Port with harbour cranes and haul trucks on the quay' },
-  { src: ld_operation.url, title: 'Loading operation under way', category: 'Loading at Mtwara Port', alt: 'Ongoing loading operation at Mtwara Port with the vessel, cranes and a queue of trucks' },
-  { src: ld_alongside.url, title: 'Alongside at Mtwara', category: 'Loading at Mtwara Port', alt: 'Full side view of the bulk carrier alongside the quay at Mtwara Port' },
-  { src: ld_stern.url, title: 'MV Alice, Panama', category: 'Loading at Mtwara Port', alt: 'Stern of the bulk carrier MV Alice of Panama moored at Mtwara Port' },
-  { src: al_approach.url, title: 'Approaching Mtwara', category: 'MV Alice — New Berth, Mtwara', alt: 'Bulk carrier MV Alice approaching Mtwara, seen from the shoreline' },
-  { src: al_berthed.url, title: 'Berthed at the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'MV Alice berthed at the New Berth in Mtwara with mooring lines ashore' },
-  { src: al_bow.url, title: 'Bow at the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Bow of the MV Alice towering over the quay at the New Berth' },
-  { src: al_alongside.url, title: 'Alongside the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'Full side view of MV Alice alongside the New Berth quay at Mtwara' },
-  { src: al_crane.url, title: 'Harbour crane on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Mobile harbour crane on the quay with the team standing by' },
-  { src: al_crew.url, title: 'Team on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Team members on the quay beside the berthed MV Alice' },
-  { src: ll_border_post.url, title: 'HoroHoro One Stop Border Post', category: 'Lunga Lunga yard — HoroHoro border', alt: 'HoroHoro One Stop Border Post building near the Lunga Lunga yard' },
-  { src: ll_screener.url, title: 'Screening plant on site', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Mobile screening plant standing on the cleared Lunga Lunga yard' },
-  { src: ll_stockpile.url, title: 'First stockpiles', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Screener working a mineral stockpile at the Lunga Lunga yard' },
-  { src: ll_loader.url, title: 'Wheel loader at work', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Wheel loader working the surfaced yard at Lunga Lunga' },
-  { src: ll_shed.url, title: 'Yard facilities', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Storage shed and surfaced pads at the Lunga Lunga yard' },
-  { src: ll_yard.url, title: 'The Lunga Lunga yard', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Cleared and surfaced yard at Lunga Lunga near the HoroHoro border' },
-  { src: dv_conveyor.url, title: 'Walking the stockpiles', category: 'Supplier visit — Devki yard', alt: 'Team walking past mineral stockpiles and conveyors at the Devki yard' },
-  { src: dv_pointing.url, title: 'Discussing the ore', category: 'Supplier visit — Devki yard', alt: 'Team member pointing across a stockpile while discussing the material' },
-  { src: dv_walking.url, title: 'Yard walkthrough', category: 'Supplier visit — Devki yard', alt: 'Team walking between dark mineral stockpiles at the Devki yard' },
-  { src: dv_group.url, title: 'Under the conveyors', category: 'Supplier visit — Devki yard', alt: 'Group walking beneath the conveyor gantries at the Devki yard' },
-  { src: dv_piles.url, title: 'Inspecting the piles', category: 'Supplier visit — Devki yard', alt: 'Team in high-visibility vests inspecting stockpiles at the Devki yard' },
-  { src: dv_inspect.url, title: 'With the Devki team', category: 'Supplier visit — Devki yard', alt: 'Shaz team member walking with a Devki staff member in a branded vest' },
+  { src: wb_truck, title: 'Truck on the weighbridge', category: 'Weighbridge — Mtwara yard', alt: 'Loaded haul truck on the weighbridge beside the yard office, with mineral stockpiles behind' },
+  { src: wb_office, title: 'The weighbridge office', category: 'Weighbridge — Mtwara yard', alt: 'Weighbridge office at the Mtwara yard with trucks and mineral stockpiles behind' },
+  { src: wb_documented, title: 'Weighed and documented', category: 'Weighbridge — Mtwara yard', alt: 'Haul trucks queuing at the weighbridge for weighing and documentation' },
+  { src: ld_berth, title: 'MV Alice at the berth', category: 'Loading at Mtwara Port', alt: 'Bulk carrier MV Alice berthed at Mtwara Port with harbour cranes and haul trucks on the quay' },
+  { src: ld_operation, title: 'Loading operation under way', category: 'Loading at Mtwara Port', alt: 'Ongoing loading operation at Mtwara Port with the vessel, cranes and a queue of trucks' },
+  { src: ld_alongside, title: 'Alongside at Mtwara', category: 'Loading at Mtwara Port', alt: 'Full side view of the bulk carrier alongside the quay at Mtwara Port' },
+  { src: ld_stern, title: 'MV Alice, Panama', category: 'Loading at Mtwara Port', alt: 'Stern of the bulk carrier MV Alice of Panama moored at Mtwara Port' },
+  { src: al_approach, title: 'Approaching Mtwara', category: 'MV Alice — New Berth, Mtwara', alt: 'Bulk carrier MV Alice approaching Mtwara, seen from the shoreline' },
+  { src: al_berthed, title: 'Berthed at the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'MV Alice berthed at the New Berth in Mtwara with mooring lines ashore' },
+  { src: al_bow, title: 'Bow at the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Bow of the MV Alice towering over the quay at the New Berth' },
+  { src: al_alongside, title: 'Alongside the New Berth', category: 'MV Alice — New Berth, Mtwara', alt: 'Full side view of MV Alice alongside the New Berth quay at Mtwara' },
+  { src: al_crane, title: 'Harbour crane on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Mobile harbour crane on the quay with the team standing by' },
+  { src: al_crew, title: 'Team on the quay', category: 'MV Alice — New Berth, Mtwara', alt: 'Team members on the quay beside the berthed MV Alice' },
+  { src: ll_border_post, title: 'HoroHoro One Stop Border Post', category: 'Lunga Lunga yard — HoroHoro border', alt: 'HoroHoro One Stop Border Post building near the Lunga Lunga yard' },
+  { src: ll_screener, title: 'Screening plant on site', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Mobile screening plant standing on the cleared Lunga Lunga yard' },
+  { src: ll_stockpile, title: 'First stockpiles', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Screener working a mineral stockpile at the Lunga Lunga yard' },
+  { src: ll_loader, title: 'Wheel loader at work', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Wheel loader working the surfaced yard at Lunga Lunga' },
+  { src: ll_shed, title: 'Yard facilities', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Storage shed and surfaced pads at the Lunga Lunga yard' },
+  { src: ll_yard, title: 'The Lunga Lunga yard', category: 'Lunga Lunga yard — HoroHoro border', alt: 'Cleared and surfaced yard at Lunga Lunga near the HoroHoro border' },
+  { src: dv_conveyor, title: 'Walking the stockpiles', category: 'Supplier visit — Devki yard', alt: 'Team walking past mineral stockpiles and conveyors at the Devki yard' },
+  { src: dv_pointing, title: 'Discussing the ore', category: 'Supplier visit — Devki yard', alt: 'Team member pointing across a stockpile while discussing the material' },
+  { src: dv_walking, title: 'Yard walkthrough', category: 'Supplier visit — Devki yard', alt: 'Team walking between dark mineral stockpiles at the Devki yard' },
+  { src: dv_group, title: 'Under the conveyors', category: 'Supplier visit — Devki yard', alt: 'Group walking beneath the conveyor gantries at the Devki yard' },
+  { src: dv_piles, title: 'Inspecting the piles', category: 'Supplier visit — Devki yard', alt: 'Team in high-visibility vests inspecting stockpiles at the Devki yard' },
+  { src: dv_inspect, title: 'With the Devki team', category: 'Supplier visit — Devki yard', alt: 'Shaz team member walking with a Devki staff member in a branded vest' },
 ] as const;
 
 export type SitePhoto = (typeof sitePhotos)[number];
