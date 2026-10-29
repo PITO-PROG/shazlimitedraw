@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from '@tanstack/react-router';
 import port from '@/assets/photos/harbour-logistics.jpg';
 import quarry from '@/assets/photos/marble-quarry.jpg';
-import atlas from '@/assets/photos/clear-crystals.jpg';
+import onboard from '@/assets/vessel/crane-side.jpg';
 import { HeroMotion } from './HeroMotion';
 import { sitePhotos } from '@/lib/site-photos';
 import { PhotoViewer } from './PhotoViewer';
@@ -14,7 +14,7 @@ import { ResponsiveImage } from './ResponsiveImage';
 
 const slides = [
   { image: port, alt: 'Container ships and cranes at a harbour at night', label: 'Source to site', title: 'Mineral Supply.', copy: 'Industrial minerals, strategic sourcing and coordinated supply-chain solutions — built around your operational requirements.', to: '/products', action: 'Explore Our Minerals' },
-  { image: atlas, alt: 'Transparent crystal cluster with natural inclusions', label: 'The mineral collection', title: 'Materials That Matter.', copy: 'Thermal coal, clinker, iron ore, gypsum, lithium and limestone. Distinct materials for the industries building East Africa.', to: '/products', action: 'Discover the Collection' },
+  { image: onboard, alt: 'Shaz inspector on a vessel hatch with port cranes behind', label: 'On board', title: 'Inspected Before Loading.', copy: 'Our shipper and shipping agent meet the Captain and check every hold for cleanliness before cargo goes aboard.', to: '/logistics', action: 'See How We Ship' },
   { image: quarry, alt: 'Terraced mineral quarry', label: 'From the earth', title: 'Sourced. Coordinated. Delivered.', copy: 'Connecting mineral sources with industrial operations through strategic trading and coordinated regional logistics.', to: '/logistics', action: 'Explore Our Supply Chain' },
 ] as const;
 
