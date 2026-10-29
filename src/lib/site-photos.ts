@@ -24,6 +24,24 @@ import ld_berth from '@/assets/mtwara/loading-1.webp.asset.json';
 import ld_operation from '@/assets/mtwara/loading-2.webp.asset.json';
 import ld_alongside from '@/assets/mtwara/loading-3.webp.asset.json';
 import ld_stern from '@/assets/mtwara/loading-4.webp.asset.json';
+import al_approach from '@/assets/mtwara/alice-1.webp.asset.json';
+import al_berthed from '@/assets/mtwara/alice-2.webp.asset.json';
+import al_bow from '@/assets/mtwara/alice-3.webp.asset.json';
+import al_alongside from '@/assets/mtwara/alice-4.webp.asset.json';
+import al_crane from '@/assets/mtwara/alice-5.webp.asset.json';
+import al_crew from '@/assets/mtwara/alice-6.webp.asset.json';
+import ll_border_post from '@/assets/yards/lungalunga-1.webp.asset.json';
+import ll_screener from '@/assets/yards/lungalunga-2.webp.asset.json';
+import ll_stockpile from '@/assets/yards/lungalunga-3.webp.asset.json';
+import ll_loader from '@/assets/yards/lungalunga-4.webp.asset.json';
+import ll_shed from '@/assets/yards/lungalunga-5.webp.asset.json';
+import ll_yard from '@/assets/yards/lungalunga-6.webp.asset.json';
+import dv_conveyor from '@/assets/yards/devki-1.webp.asset.json';
+import dv_pointing from '@/assets/yards/devki-2.webp.asset.json';
+import dv_walking from '@/assets/yards/devki-3.webp.asset.json';
+import dv_group from '@/assets/yards/devki-4.webp.asset.json';
+import dv_piles from '@/assets/yards/devki-5.webp.asset.json';
+import dv_inspect from '@/assets/yards/devki-6.webp.asset.json';
 
 export const sitePhotos = [
   { src: crystals, title: 'Clear crystal formations', category: 'Minerals', alt: 'Transparent crystal cluster with natural inclusions' },
