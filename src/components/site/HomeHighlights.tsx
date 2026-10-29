@@ -36,7 +36,7 @@ export function OnTheGround() {
   return <section className="bg-background">
     <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[1.1fr_1fr] lg:items-center">
       <Reveal><div className="relative overflow-hidden rounded-xl shadow-deep">
-        <img src={captain} alt="Shaz shipper and shipping agent meeting the Captain in the ship office" loading="lazy" width={1200} height={1600} className="aspect-[4/5] w-full object-cover lg:aspect-[5/6]" />
+        <img src={captain} alt="Shaz shipper and shipping agent meeting the Captain in the ship office" loading="lazy" width={1200} height={1600} className="aspect-[4/5] w-full object-cover object-top" />
         <span className="story-badge">Meeting the Captain</span>
       </div></Reveal>
       <div>
