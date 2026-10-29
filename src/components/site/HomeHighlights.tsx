@@ -17,7 +17,7 @@ export function HighlightStrip() {
   return <section aria-label="Highlights" className="highlight-strip">
     <div className="mx-auto grid max-w-7xl md:grid-cols-3">
       {highlights.map(item => <Link key={item.title} to={item.to} className="highlight-item group">
-        <span className="font-mono text-xs uppercase text-copper">{item.tag}</span>
+        <span className="font-mono text-xs uppercase text-primary">{item.tag}</span>
         <span className="mt-3 block text-lg font-semibold leading-snug">{item.title}</span>
         <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">{item.action}<ArrowRight className="h-4 w-4 transition-transform motion-safe:group-hover:translate-x-1" /></span>
       </Link>)}
