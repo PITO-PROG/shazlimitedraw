@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import port from "@/assets/port.jpg";
-import weighbridgeFilm from "@/assets/mtwara/weighbridge-video.mp4.asset.json";
+import weighbridgeFilm from "@/assets/mtwara/weighbridge-video.mp4";
 import { CTA, PageHero, Reveal, SectionHead } from "@/components/site/ui";
 import { RegionMap, SupplyRoute } from "@/components/site/widgets";
 
@@ -35,7 +35,7 @@ function Logistics() {
         <div className="mx-auto max-w-7xl px-6 py-24">
           <Reveal><SectionHead eyebrow="On the ground" title="Weighbridge, Mtwara yard." text="Every load is weighed and documented at the yard before it moves to the port." /></Reveal>
           <div className="mt-12">
-            <video src={weighbridgeFilm.url} controls playsInline preload="metadata" className="w-full rounded-xl shadow-deep" aria-label="Trucks being weighed at the Mtwara yard weighbridge" />
+            <video src={weighbridgeFilm} controls playsInline preload="metadata" className="w-full rounded-xl shadow-deep" aria-label="Trucks being weighed at the Mtwara yard weighbridge" />
           </div>
         </div>
       </section>
