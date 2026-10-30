@@ -601,3 +601,12 @@ main > section:has(form) input[type="file"] { max-width: 100%; }
 [role="dialog"] .mineral-photo { aspect-ratio: 16 / 9; }
 
 
+/* Mineral collection: specimen area shows the whole photo set, not one specimen */
+.mineral-collection-grid { display: grid; grid-template-columns: 1.7fr 1fr; grid-auto-rows: minmax(0, 1fr); gap: 4px; background: var(--stage-raised); overflow: hidden; }
+.mineral-collection-grid > button { position: relative; overflow: hidden; padding: 0; border: 0; background: var(--stage-raised); cursor: pointer; }
+.mineral-collection-grid > button.is-main { grid-row: span 2; }
+.mineral-collection-grid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms ease-out; }
+.mineral-collection-grid > button:hover img { transform: scale(1.04); }
+.mineral-collection-grid > button:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.specimen-tag { background: var(--card); border: 1px solid var(--border); padding: 0.3rem 0.55rem; }
+@media (prefers-reduced-motion: reduce) { .mineral-collection-grid > button:hover img { transform: none; } }
