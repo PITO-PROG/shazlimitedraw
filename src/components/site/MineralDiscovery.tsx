@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { minerals } from "@/lib/content";
 import { mineralDetails } from "@/lib/mineral-discovery";
 import { Specimen3D } from "./ui";
-import { mineralPhotos } from "@/lib/mineral-media";
+import { mineralCollections, mineralPhotos } from "@/lib/mineral-media";
 import { QuarryFilm } from "./QuarryFilm";
 
 export function MineralDiscovery() {
@@ -19,6 +19,8 @@ export function MineralDiscovery() {
   const [separation, setSeparation] = useState(0);
   const [reset, setReset] = useState(0);
   const [photo, setPhoto] = useState<number | null>(null);
+  const [shot, setShot] = useState(0);
+
   const [wireframe, setWireframe] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [expanded, setExpanded] = useState(false);
@@ -39,6 +41,10 @@ export function MineralDiscovery() {
   }, []);
   const mineral = minerals[selected] ?? minerals[0];
   const properties = mineralDetails[selected] ?? mineralDetails[0];
+  const collection = mineralCollections[selected] ?? mineralCollections[0]!;
+  const shown = photo === null ? null : (mineralCollections[photo] ?? mineralCollections[0]!);
+
+
   if (!mineral || !properties) return null;
   return (
     <section ref={section} aria-label="Mineral discovery" className="mineral-discovery border-t border-border">
@@ -68,7 +74,9 @@ export function MineralDiscovery() {
                 <Button size="sm" variant={surface === "polished" ? "secondary" : "ghost"} aria-pressed={surface === "polished"} onClick={() => setSurface("polished")}><Sparkles />Polished</Button>
               </div>
             </div>
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-1" aria-label={`${mineral.name} photo collection`}>{collection.shots.map((s, i) => <button key={s.src} type="button" onClick={() => { setPhoto(selected); setShot(i); }} className={`mineral-strip-thumb${photo === selected && shot === i ? " is-active" : ""}`} aria-label={`Open ${mineral.name} photograph ${i + 1} of ${collection.shots.length}`}><img src={s.src} alt={s.alt} width={160} height={120} loading="lazy" /></button>)}</div>
           </div>
+
           <div className="min-w-0 lg:pl-6" aria-live="polite">
             <p className="eyebrow">Material profile</p><h3 className="mt-3 text-3xl font-bold">{mineral.name}</h3>
             <p className="mt-4 text-muted-foreground">{mineral.intro}</p>
@@ -83,14 +91,18 @@ export function MineralDiscovery() {
           </div>
         </div>
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {minerals.map((m, i) => <Button key={m.slug} variant="ghost" className="group block h-auto min-w-0 overflow-hidden rounded-sm border border-border p-0 text-left hover:bg-card" aria-label={`View ${m.name} photograph`} onClick={() => { setSelected(i); setPhoto(i); }}>
-            <div className="mineral-photo"><img src={mineralPhotos[i]} alt={`Illustrative ${m.name} geological specimen`} width={512} height={512} loading="lazy" /></div>
-            <span className="flex items-center justify-between gap-2 p-4 text-sm">{m.name}<ZoomIn className="text-accent" /></span>
-          </Button>)}
+          {minerals.map((m, i) => {
+            const group = mineralCollections[i];
+            return <Button key={m.slug} variant="ghost" className="group block h-auto min-w-0 overflow-hidden rounded-sm border border-border p-0 text-left hover:bg-card" aria-label={`View ${m.name} photo collection`} onClick={() => { setSelected(i); setShot(0); setPhoto(i); }}>
+              <div className="mineral-photo mineral-photo-collection"><img src={group?.main ?? mineralPhotos[i]} alt={group?.mainAlt ?? `Illustrative ${m.name} geological specimen`} width={512} height={512} loading="lazy" />{group && group.shots.length > 1 && <span className="mineral-photo-stack" aria-hidden="true">{group.shots.slice(1, 3).map((s) => <img key={s.src} src={s.src} alt="" width={96} height={96} loading="lazy" />)}</span>}</div>
+              <span className="flex items-center justify-between gap-2 p-4 text-sm">{m.name}<ZoomIn className="text-accent" /></span>
+            </Button>;
+          })}
+
         </div>
       </div>
       <QuarryFilm />
-      <Dialog open={photo !== null} onOpenChange={(open) => { if (!open) setPhoto(null); }}><DialogContent className="max-w-2xl" aria-describedby={undefined}><DialogTitle>{minerals[photo ?? 0]?.name} — mineral study</DialogTitle><div className="mineral-photo"><img src={mineralPhotos[photo ?? 0]} width={512} height={512} alt={`Illustrative ${minerals[photo ?? 0]?.name} specimen`} /></div></DialogContent></Dialog>
+      <Dialog open={photo !== null} onOpenChange={(open) => { if (!open) setPhoto(null); }}><DialogContent className="max-w-3xl" aria-describedby={undefined}><DialogTitle>{minerals[photo ?? 0]?.name} — photo collection</DialogTitle>{shown && <div><div className="mineral-photo"><img src={shown.shots[shot]?.src ?? shown.shots[0]!.src} width={512} height={512} alt={shown.shots[shot]?.alt ?? shown.shots[0]!.alt} /></div><div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label={`${minerals[photo ?? 0]?.name} photographs`}>{shown.shots.map((s, i) => <button key={s.src} type="button" onClick={() => setShot(i)} aria-pressed={i === shot} aria-label={`Show ${minerals[photo ?? 0]?.name} photograph ${i + 1} of ${shown.shots.length}`} className={`mineral-strip-thumb${i === shot ? " is-active" : ""}`}><img src={s.src} alt="" width={96} height={72} loading="lazy" /></button>)}</div></div>}</DialogContent></Dialog>
       <Dialog open={expanded} onOpenChange={setExpanded}><DialogContent className="specimen-dialog" aria-describedby={undefined}><DialogTitle>{mineral.name} — geological specimen</DialogTitle><Specimen3D label={`${mineral.name} expanded specimen`} {...mineral.look} surface={surface} paused={paused} separation={separation} wireframe={wireframe} zoom={zoom} className="expanded-specimen" /><div className="flex justify-center gap-2"><Button variant="outline" aria-pressed={wireframe} onClick={() => setWireframe(!wireframe)}><Box />Wireframe</Button><Button variant="outline" onClick={() => setPaused(!paused)}>{paused ? <Play /> : <Pause />}{paused ? 'Resume' : 'Pause'}</Button></div></DialogContent></Dialog>
     </section>
   );
