@@ -4,10 +4,10 @@ import { minerals } from "@/lib/content";
 import { mineralCollections, mineralPhotos } from "@/lib/mineral-media";
 
 describe("Mineral collection photo sets", () => {
-  it("gives every mineral a collection of at least two photos", () => {
+  it("gives every mineral a collection of at least three photos", () => {
     expect(mineralCollections).toHaveLength(minerals.length);
     for (const group of mineralCollections) {
-      expect(group.shots.length).toBeGreaterThanOrEqual(2);
+      expect(group.shots.length).toBeGreaterThanOrEqual(3);
       expect(group.shots.some((shot) => shot.src === group.main)).toBe(true);
     }
   });
