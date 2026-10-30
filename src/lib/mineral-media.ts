@@ -8,7 +8,7 @@ import ironConveyor from '@/assets/editorial/ore-conveyor.jpg';
 import gypsumQuarry from '@/assets/editorial/quarry-wall.jpg';
 import gypsumSurface from '@/assets/photos/geological-texture.jpg';
 import lithiumConcentrate from '@/assets/photos/metallic-crystals.jpg';
-import lithiumPlant from '@/assets/photos/industrial-plant.jpg';
+import lithiumCrystals from '@/assets/photos/clear-crystals.jpg';
 import limestoneBoulders from '@/assets/editorial/limestone-field.jpg';
 import limestoneQuarry from '@/assets/editorial/green-quarry.jpg';
 import limestoneBench from '@/assets/photos/marble-quarry.jpg';
@@ -59,9 +59,10 @@ export const mineralCollections: MineralCollection[] = [
     mainAlt: 'Illustrative lithium concentrate — granular mineral aggregate',
     shots: [
       { src: lithiumConcentrate, alt: 'Illustrative lithium concentrate — granular mineral aggregate' },
-      { src: lithiumPlant, alt: 'Illustrative lithium processing — plant with pipes and tanks' },
+      { src: lithiumCrystals, alt: 'Illustrative lithium-bearing ore — pale crystal cluster on matrix' },
     ],
   },
+
   {
     main: limestoneBoulders,
     mainAlt: 'Illustrative limestone at the source — boulders on open ground',

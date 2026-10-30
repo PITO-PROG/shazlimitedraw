@@ -598,4 +598,6 @@ main > section:has(form) input[type="file"] { max-width: 100%; }
 .mineral-strip-thumb { flex: 0 0 auto; width: 112px; padding: 0; overflow: hidden; border: 1px solid var(--border); background: var(--card); }
 .mineral-strip-thumb img { width: 100%; height: 78px; object-fit: cover; display: block; }
 .mineral-strip-thumb:hover, .mineral-strip-thumb.is-active { border-color: var(--primary); }
+[role="dialog"] .mineral-photo { aspect-ratio: 16 / 9; }
+
 
