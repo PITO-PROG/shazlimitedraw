@@ -6,9 +6,22 @@ import { Slider } from "@/components/ui/slider";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { minerals } from "@/lib/content";
 import { mineralDetails } from "@/lib/mineral-discovery";
-import { Specimen3D } from "./ui";
-import { mineralCollections, mineralPhotos } from "@/lib/mineral-media";
+import { mineralCollections, mineralPhotos, type MineralCollection } from "@/lib/mineral-media";
 import { QuarryFilm } from "./QuarryFilm";
+
+/** The mineral's photo set: one large study with the rest stacked beside it. */
+function CollectionGrid({ collection, label, onSelect, className }: { collection: MineralCollection; label: string; onSelect: (index: number) => void; className?: string }) {
+  const shots = collection.shots;
+  return (
+    <div className={`mineral-collection-grid${className ? ` ${className}` : ""}`} role="group" aria-label={`${label} photo collection`}>
+      {shots.map((shot, i) => (
+        <button key={shot.src} type="button" className={i === 0 ? "is-main" : undefined} onClick={() => onSelect(i)} aria-label={`Open ${label} photograph ${i + 1} of ${shots.length}`}>
+          <img src={shot.src} alt={shot.alt} width={i === 0 ? 1024 : 512} height={i === 0 ? 1024 : 512} loading="lazy" />
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function MineralDiscovery() {
   const { pathname } = useLocation();
@@ -44,7 +57,6 @@ export function MineralDiscovery() {
   const collection = mineralCollections[selected] ?? mineralCollections[0]!;
   const shown = photo === null ? null : (mineralCollections[photo] ?? mineralCollections[0]!);
 
-
   if (!mineral || !properties) return null;
   return (
     <section ref={section} aria-label="Mineral discovery" className="mineral-discovery border-t border-border">
@@ -58,8 +70,8 @@ export function MineralDiscovery() {
         </div>
         <div className="relative mt-8 grid items-center gap-8 lg:grid-cols-[1.5fr_1fr]">
           <div className="relative min-w-0">
-            <div className="pointer-events-none absolute left-0 top-5 z-10 font-mono text-xs text-muted-foreground">SPECIMEN / 0{selected + 1}</div>
-            <Specimen3D key={`${reset}-${mineral.slug}`} label={`${mineral.name} interactive geological specimen`} {...mineral.look} surface={surface} paused={paused} separation={separation} wireframe={wireframe} zoom={zoom} scrollProgress={progress} scrollLinked dust className="h-[340px] md:h-[480px]" />
+            <div className="specimen-tag pointer-events-none absolute left-0 top-4 z-10 font-mono text-xs text-muted-foreground">SPECIMEN / 0{selected + 1}</div>
+            <CollectionGrid collection={collection} label={mineral.name} onSelect={(i) => { setPhoto(selected); setShot(i); }} className="h-[340px] md:h-[480px]" />
             <div className="flex flex-wrap items-center justify-between gap-4 border-y border-border py-3">
               <div className="flex gap-1">
                 <Button size="icon" variant="ghost" aria-label={paused ? "Resume specimen rotation" : "Pause specimen rotation"} title={paused ? "Resume rotation" : "Pause rotation"} onClick={() => setPaused(!paused)}>{paused ? <Play /> : <Pause />}</Button>
@@ -74,7 +86,6 @@ export function MineralDiscovery() {
                 <Button size="sm" variant={surface === "polished" ? "secondary" : "ghost"} aria-pressed={surface === "polished"} onClick={() => setSurface("polished")}><Sparkles />Polished</Button>
               </div>
             </div>
-            <div className="mt-4 flex gap-2 overflow-x-auto pb-1" aria-label={`${mineral.name} photo collection`}>{collection.shots.map((s, i) => <button key={s.src} type="button" onClick={() => { setPhoto(selected); setShot(i); }} className={`mineral-strip-thumb${photo === selected && shot === i ? " is-active" : ""}`} aria-label={`Open ${mineral.name} photograph ${i + 1} of ${collection.shots.length}`}><img src={s.src} alt={s.alt} width={160} height={120} loading="lazy" /></button>)}</div>
           </div>
 
           <div className="min-w-0 lg:pl-6" aria-live="polite">
@@ -103,7 +114,7 @@ export function MineralDiscovery() {
       </div>
       <QuarryFilm />
       <Dialog open={photo !== null} onOpenChange={(open) => { if (!open) setPhoto(null); }}><DialogContent className="max-w-3xl" aria-describedby={undefined}><DialogTitle>{minerals[photo ?? 0]?.name} — photo collection</DialogTitle>{shown && <div><div className="mineral-photo"><img src={shown.shots[shot]?.src ?? shown.shots[0]!.src} width={512} height={512} alt={shown.shots[shot]?.alt ?? shown.shots[0]!.alt} /></div><div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label={`${minerals[photo ?? 0]?.name} photographs`}>{shown.shots.map((s, i) => <button key={s.src} type="button" onClick={() => setShot(i)} aria-pressed={i === shot} aria-label={`Show ${minerals[photo ?? 0]?.name} photograph ${i + 1} of ${shown.shots.length}`} className={`mineral-strip-thumb${i === shot ? " is-active" : ""}`}><img src={s.src} alt="" width={96} height={72} loading="lazy" /></button>)}</div></div>}</DialogContent></Dialog>
-      <Dialog open={expanded} onOpenChange={setExpanded}><DialogContent className="specimen-dialog" aria-describedby={undefined}><DialogTitle>{mineral.name} — geological specimen</DialogTitle><Specimen3D label={`${mineral.name} expanded specimen`} {...mineral.look} surface={surface} paused={paused} separation={separation} wireframe={wireframe} zoom={zoom} className="expanded-specimen" /><div className="flex justify-center gap-2"><Button variant="outline" aria-pressed={wireframe} onClick={() => setWireframe(!wireframe)}><Box />Wireframe</Button><Button variant="outline" onClick={() => setPaused(!paused)}>{paused ? <Play /> : <Pause />}{paused ? 'Resume' : 'Pause'}</Button></div></DialogContent></Dialog>
+      <Dialog open={expanded} onOpenChange={setExpanded}><DialogContent className="specimen-dialog" aria-describedby={undefined}><DialogTitle>{mineral.name} — photo collection</DialogTitle><CollectionGrid collection={collection} label={mineral.name} onSelect={(i) => { setShot(i); setPhoto(selected); setExpanded(false); }} className="expanded-specimen" /></DialogContent></Dialog>
     </section>
   );
 }
