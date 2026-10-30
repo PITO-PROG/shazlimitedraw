@@ -41,7 +41,9 @@ export function MineralDiscovery() {
   }, []);
   const mineral = minerals[selected] ?? minerals[0];
   const properties = mineralDetails[selected] ?? mineralDetails[0];
-  const collection = mineralCollections[selected] ?? mineralCollections[0];
+  const collection = mineralCollections[selected] ?? mineralCollections[0]!;
+  const shown = photo === null ? null : (mineralCollections[photo] ?? mineralCollections[0]!);
+
 
   if (!mineral || !properties) return null;
   return (
@@ -100,7 +102,7 @@ export function MineralDiscovery() {
         </div>
       </div>
       <QuarryFilm />
-      <Dialog open={photo !== null} onOpenChange={(open) => { if (!open) setPhoto(null); }}><DialogContent className="max-w-3xl" aria-describedby={undefined}><DialogTitle>{minerals[photo ?? 0]?.name} — photo collection</DialogTitle>{photo !== null && <div><div className="mineral-photo"><img src={mineralCollections[photo]?.shots[shot]?.src ?? mineralPhotos[photo]} width={512} height={512} alt={mineralCollections[photo]?.shots[shot]?.alt ?? `Illustrative ${minerals[photo]?.name} specimen`} /></div><div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label={`${minerals[photo]?.name} photographs`}>{mineralCollections[photo]?.shots.map((s, i) => <button key={s.src} type="button" onClick={() => setShot(i)} aria-pressed={i === shot} aria-label={`Show ${minerals[photo]?.name} photograph ${i + 1} of ${mineralCollections[photo].shots.length}`} className={`mineral-strip-thumb${i === shot ? " is-active" : ""}`}><img src={s.src} alt="" width={96} height={72} loading="lazy" /></button>)}</div></div>}</DialogContent></Dialog>
+      <Dialog open={photo !== null} onOpenChange={(open) => { if (!open) setPhoto(null); }}><DialogContent className="max-w-3xl" aria-describedby={undefined}><DialogTitle>{minerals[photo ?? 0]?.name} — photo collection</DialogTitle>{shown && <div><div className="mineral-photo"><img src={shown.shots[shot]?.src ?? shown.shots[0]!.src} width={512} height={512} alt={shown.shots[shot]?.alt ?? shown.shots[0]!.alt} /></div><div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label={`${minerals[photo ?? 0]?.name} photographs`}>{shown.shots.map((s, i) => <button key={s.src} type="button" onClick={() => setShot(i)} aria-pressed={i === shot} aria-label={`Show ${minerals[photo ?? 0]?.name} photograph ${i + 1} of ${shown.shots.length}`} className={`mineral-strip-thumb${i === shot ? " is-active" : ""}`}><img src={s.src} alt="" width={96} height={72} loading="lazy" /></button>)}</div></div>}</DialogContent></Dialog>
       <Dialog open={expanded} onOpenChange={setExpanded}><DialogContent className="specimen-dialog" aria-describedby={undefined}><DialogTitle>{mineral.name} — geological specimen</DialogTitle><Specimen3D label={`${mineral.name} expanded specimen`} {...mineral.look} surface={surface} paused={paused} separation={separation} wireframe={wireframe} zoom={zoom} className="expanded-specimen" /><div className="flex justify-center gap-2"><Button variant="outline" aria-pressed={wireframe} onClick={() => setWireframe(!wireframe)}><Box />Wireframe</Button><Button variant="outline" onClick={() => setPaused(!paused)}>{paused ? <Play /> : <Pause />}{paused ? 'Resume' : 'Pause'}</Button></div></DialogContent></Dialog>
     </section>
   );
