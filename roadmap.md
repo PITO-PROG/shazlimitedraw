@@ -1,4 +1,6 @@
 # Immersive mineral website
+- [ ] Place November uploads against the existing mineral, industry, logistics and quality text.
+- [ ] Source missing mineral imagery online and verify image viewing across affected pages.
 - [x] Restore the uploaded website while preserving the project framework.
 - [x] Enhance 3D specimens with textured materials, separation, surface modes and motion controls.
 - [x] Add locally stored mineral pictures and a cinematic landscape video.
