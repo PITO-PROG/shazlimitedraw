@@ -1,4 +1,6 @@
-import coalBulk from '@/assets/photos/coal-texture.jpg';
+import coalBulk from '@/assets/november/coal-granules.webp';
+import clinkerBulk from '@/assets/november/clinker-bulk.webp';
+import { novemberMedia } from './november-media';
 import coalEmbers from '@/assets/photos/glowing-coals.jpg';
 import coalHandling from '@/assets/photos/industrial-plant.jpg';
 import clinkerSilos from '@/assets/editorial/cement-silos.jpg';
@@ -21,23 +23,24 @@ export type MineralShot = { src: string; alt: string };
 export type MineralCollection = { main: string; mainAlt: string; shots: MineralShot[] };
 
 /** One representative bulk-material photo per mineral, in minerals[] order. */
-export const mineralPhotos = [coalBulk, clinkerSilos, ironStockpile, gypsumQuarry, lithiumMine, limestoneBoulders];
+export const mineralPhotos = [coalBulk, clinkerBulk, ironStockpile, gypsumQuarry, lithiumMine, novemberMedia.limestone];
 
 /** The bulk / stockpile studies shown behind each mineral, in minerals[] order. */
 export const mineralCollections: MineralCollection[] = [
   {
     main: coalBulk,
-    mainAlt: 'Illustrative thermal coal in bulk — fractured dark coal surface',
+    mainAlt: 'Thermal coal study — a collection of dark coal granules',
     shots: [
-      { src: coalBulk, alt: 'Illustrative thermal coal in bulk — fractured dark coal surface' },
+      { src: coalBulk, alt: 'Thermal coal study — a collection of dark coal granules' },
       { src: coalEmbers, alt: 'Illustrative thermal coal handled as fuel — glowing coal embers' },
       { src: coalHandling, alt: 'Illustrative thermal coal handling — processing facility in daylight' },
     ],
   },
   {
-    main: clinkerSilos,
-    mainAlt: 'Illustrative clinker storage — cement silos at a grinding plant',
+    main: clinkerBulk,
+    mainAlt: 'Portland cement clinker — a collection of grey nodules',
     shots: [
+      { src: clinkerBulk, alt: 'Portland cement clinker — a collection of grey nodules' },
       { src: clinkerSilos, alt: 'Illustrative clinker storage — cement silos at a grinding plant' },
       { src: clinkerWorks, alt: 'Illustrative clinker production — cement works with kiln stacks' },
       { src: clinkerSamples, alt: 'Illustrative clinker quality check — sample trays of bulk aggregate and powder' },
@@ -71,9 +74,10 @@ export const mineralCollections: MineralCollection[] = [
     ],
   },
   {
-    main: limestoneBoulders,
-    mainAlt: 'Illustrative limestone at the source — boulders on open ground',
+    main: novemberMedia.limestone,
+    mainAlt: 'Limestone extraction study — excavator among pale quarry rocks',
     shots: [
+      { src: novemberMedia.limestone, alt: 'Limestone extraction study — excavator among pale quarry rocks' },
       { src: limestoneBoulders, alt: 'Illustrative limestone at the source — boulders on open ground' },
       { src: limestoneQuarry, alt: 'Illustrative limestone quarry — open pit in a green landscape' },
       { src: limestoneBench, alt: 'Illustrative limestone bench — terraced quarry face with haul trucks' },

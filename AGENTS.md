@@ -15,6 +15,7 @@
 - Resolve 3D lighting and particle colors from global semantic CSS tokens after hydration, so the specimen presentation follows the site's theme while retaining mineral material colors.
 - Share hero motion through a hydration-safe wrapper and pause slideshow autoplay for reduced motion, focus, hidden tabs and offscreen sections, so cinematic movement remains accessible.
 - Centralize locally bundled photographic studies and responsive WebP variants, and reuse the accessible photo viewer with the same image shown in each trigger, so imagery stays lightweight and consistent.
+- Keep newly supplied photographic studies in a shared media registry and retain attribution for sourced images, so page placements stay consistent without implying unverified locations or mineral grades.
 - Reuse one bundled logo and shared dropdown groups in site chrome, so branding and destination links remain consistent across pages and screen sizes.
 - Keep cursor effects local to immersive heroes and specimen canvases, with frame-batched pointer updates and reduced-motion guards, so native navigation and touch interactions remain unaffected.
 - Use the shared hydration-safe MotionProvider for scroll-driven presentation, so the header, heroes and photographic specimens share one frame-batched scroll listener.

@@ -2,12 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { SpecimenProps } from "@/components/three/SpecimenCanvas";
 import { cn } from "@/lib/utils";
-import ironPhoto from "@/assets/iron-study.jpg";
-import coalPhoto from "@/assets/coal-study.jpg";
-import clinkerPhoto from "@/assets/clinker-study.jpg";
-import gypsumPhoto from "@/assets/gypsum-study.jpg";
-import lithiumPhoto from "@/assets/lithium-study.jpg";
-import limestonePhoto from "@/assets/limestone-study.jpg";
+import { mineralPhotos } from '@/lib/mineral-media';
 import { HeroMotion } from './HeroMotion';
 import { photosForPage } from '@/lib/site-photos';
 import { PhotoViewer } from './PhotoViewer';
@@ -18,20 +13,20 @@ import { ResponsiveImage } from './ResponsiveImage';
 import { useMotionFrame } from './MotionSystem';
 import { editorialMedia } from '@/lib/editorial-media';
 
-const mineralImages: Record<string, string> = {
-  coal: coalPhoto,
-  clinker: clinkerPhoto,
-  iron: ironPhoto,
-  gypsum: gypsumPhoto,
-  lithium: lithiumPhoto,
-  limestone: limestonePhoto,
-  core: limestonePhoto,
+const mineralImages: Record<string, string | undefined> = {
+  coal: mineralPhotos[0],
+  clinker: mineralPhotos[1],
+  iron: mineralPhotos[2],
+  gypsum: mineralPhotos[3],
+  lithium: mineralPhotos[4],
+  limestone: mineralPhotos[5],
+  core: mineralPhotos[5],
 };
 
 function photoFor(label: string) {
   const l = label.toLowerCase();
   const key = Object.keys(mineralImages).find((k) => l.includes(k));
-  return key ? mineralImages[key] : ironPhoto;
+  return key ? mineralImages[key] : mineralPhotos[2];
 }
 
 /** Mineral photograph (replaces the former 3D specimen). */
@@ -151,7 +146,7 @@ export function CTA() {
   return (
     <><div className="section-light"><PhotoGallery /></div>
     <section className="cta-band" aria-labelledby="cta-title">
-      <ResponsiveImage src={editorialMedia.port} alt="Container ships and cranes at a harbour at night" loading="lazy" width={1920} height={1280} sizes="100vw" />
+      <ResponsiveImage src={editorialMedia.port} alt="Cargo vessel alongside harbour cranes in daylight" loading="lazy" width={1920} height={1280} sizes="100vw" />
       <div className="mx-auto w-full max-w-7xl px-6 py-24">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">Start a supply conversation</p>

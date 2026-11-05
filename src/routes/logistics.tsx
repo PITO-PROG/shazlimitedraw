@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import port from "@/assets/port.jpg";
+import port from "@/assets/november/bulk-carrier.webp";
 import weighbridgeFilm from "@/assets/mtwara/weighbridge-video.mp4";
 import { CTA, PageHero, Reveal, SectionHead } from "@/components/site/ui";
 import { RegionMap, SupplyRoute } from "@/components/site/widgets";
@@ -25,7 +25,7 @@ function Logistics() {
         eyebrow="Supply chain & logistics"
         title={<>Port to plant, <span className="text-copper">coordinated.</span></>}
         text="Road and sea logistics, shipment planning, customs coordination and delivery management — aligned with your production schedule."
-        visual={<img src={port} alt="Shaz team on the deck of a bulk vessel at the quay" width={1600} height={912} className="h-full w-full rounded-xl object-cover shadow-deep" />}
+        visual={<img src={port} alt="Bulk cargo ship underway on open water" width={1600} height={912} className="h-full w-full rounded-xl object-cover shadow-deep" />}
       />
       <section className="mx-auto max-w-7xl px-6 py-24">
         <SectionHead eyebrow="Shipment stages" title="Every movement, planned." />
