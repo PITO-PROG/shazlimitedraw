@@ -10,12 +10,27 @@ import { useMotionFrame } from './MotionSystem';
 import { mineralPhotos } from '@/lib/mineral-media';
 import { ResponsiveImage } from './ResponsiveImage';
 
-const groups = [
-  { label: "Company", links: [{ to: "/about", label: "About" }, { to: "/leadership", label: "Leadership" }, { to: "/why", label: "Why Shaz" }, { to: "/sustainability", label: "Sustainability" }] },
-  { label: "Products", links: [{ to: "/products", label: "All minerals" }] },
-  { label: "Solutions", links: [{ to: "/services", label: "Services" }, { to: "/industries", label: "Industries" }, { to: "/logistics", label: "Supply Chain & Logistics" }, { to: "/quality", label: "Quality Assurance" }] },
-  { label: "Resources", links: [{ to: "/insights", label: "Insights" }, { to: "/faq", label: "FAQ" }] },
-] as const;
+type NavLink = { to: "/about" | "/leadership" | "/why" | "/sustainability" | "/products" | "/services" | "/logistics" | "/quality" | "/insights" | "/faq" | "/contact" | "/industries"; label: string; hint: string };
+const groups: { label: string; links: NavLink[] }[] = [
+  { label: "About us", links: [
+    { to: "/about", label: "Who we are", hint: "Our story and mission" },
+    { to: "/why", label: "Why choose us", hint: "Five reasons clients work with us" },
+    { to: "/leadership", label: "Our team", hint: "The people behind Shaz" },
+    { to: "/sustainability", label: "Sustainability", hint: "Responsible sourcing" },
+  ] },
+  { label: "Minerals", links: [{ to: "/products", label: "View all minerals", hint: "Coal, clinker, iron ore and more" }] },
+  { label: "Services", links: [
+    { to: "/services", label: "What we do", hint: "Sourcing, trading and supply" },
+    { to: "/logistics", label: "Shipping & logistics", hint: "From yard to port to you" },
+    { to: "/quality", label: "Quality & testing", hint: "Inspection and lab checks" },
+    { to: "/industries", label: "Industries we serve", hint: "Cement, steel, energy and more" },
+  ] },
+  { label: "Help", links: [
+    { to: "/insights", label: "News & insights", hint: "Market updates" },
+    { to: "/faq", label: "Questions & answers", hint: "Common questions answered" },
+    { to: "/contact", label: "Contact us", hint: "Talk to our team" },
+  ] },
+];
 
 export function BrandLogo({ className }: { className?: string }) {
   return <img src={logo} alt="Shaz Ventures Limited" width={200} height={98} className={cn("h-14 w-auto shrink-0 object-contain", className)} />;
@@ -30,8 +45,8 @@ function MenuGroup({ group, onNavigate }: { group: typeof groups[number]; onNavi
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" sideOffset={12} className="site-dropdown z-[60] w-64 border-[var(--header-border)] bg-[var(--header-bg)] p-2 text-[var(--header-foreground)]">
-        {group.links.map((link) => <DropdownMenuItem asChild key={link.to}><Link to={link.to} onClick={onNavigate} className="px-3 py-3" activeProps={{ className: "text-primary" }}>{link.label}</Link></DropdownMenuItem>)}
-        {group.label === "Products" && <><DropdownMenuSeparator />{minerals.map((mineral, index) => <DropdownMenuItem asChild key={mineral.slug}><Link to="/products/$slug" params={{ slug: mineral.slug }} onClick={onNavigate} className="mineral-menu-item px-3 py-3"><ResponsiveImage src={mineralPhotos[index]} width={48} height={48} alt="" loading="lazy" sizes="48px" />{mineral.name}</Link></DropdownMenuItem>)}</>}
+        {group.links.map((link) => <DropdownMenuItem asChild key={link.to}><Link to={link.to} onClick={onNavigate} className="flex flex-col items-start gap-0.5 px-3 py-2.5" activeProps={{ className: "text-primary" }}><span className="font-semibold">{link.label}</span><span className="text-xs text-[var(--header-muted)]">{link.hint}</span></Link></DropdownMenuItem>)}
+        {group.label === "Minerals" && <><DropdownMenuSeparator />{minerals.map((mineral, index) => <DropdownMenuItem asChild key={mineral.slug}><Link to="/products/$slug" params={{ slug: mineral.slug }} onClick={onNavigate} className="mineral-menu-item px-3 py-3"><ResponsiveImage src={mineralPhotos[index]} width={48} height={48} alt="" loading="lazy" sizes="48px" />{mineral.name}</Link></DropdownMenuItem>)}</>}
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -49,16 +64,22 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-2 md:flex">
           {groups.map((group) => <MenuGroup key={group.label} group={group} />)}
-          <Button asChild><Link to="/contact">Enquire</Link></Button>
+          <Button asChild><Link to="/contact">Request a quote</Link></Button>
         </nav>
         <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-controls="mobile-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
         </Button>
       </div>
       {open && (
-        <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-2 px-6 pb-6 md:hidden">
-          {groups.map((group) => <MenuGroup key={group.label} group={group} onNavigate={() => setOpen(false)} />)}
-          <Button asChild><Link to="/contact" onClick={() => setOpen(false)}>Enquire</Link></Button>
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex max-h-[80vh] flex-col gap-2 overflow-y-auto px-6 pb-6 md:hidden">
+          <Link to="/" onClick={() => setOpen(false)} className="py-2 font-semibold">Home</Link>
+          {groups.map((group) => (
+            <div key={group.label} className="border-t border-[var(--header-border)] pt-3">
+              <p className="eyebrow mb-1">{group.label}</p>
+              {group.links.map((link) => <Link key={link.to} to={link.to} onClick={() => setOpen(false)} className="block py-2 font-medium" activeProps={{ className: "text-primary" }}>{link.label}</Link>)}
+            </div>
+          ))}
+          <Button asChild><Link to="/contact" onClick={() => setOpen(false)}>Request a quote</Link></Button>
         </nav>
       )}
     </header>
