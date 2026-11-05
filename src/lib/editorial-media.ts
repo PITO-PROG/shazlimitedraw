@@ -1,20 +1,14 @@
-import source from '@/assets/editorial/source.jpg';
-import steelworks from '@/assets/editorial/steelworks.jpg';
-import port from '@/assets/editorial/day-port.jpg';
-import freight from '@/assets/editorial/freight-road.jpg';
+import { novemberMedia } from './november-media';
 import ore from '@/assets/editorial/ore-conveyor.jpg';
 import cement from '@/assets/editorial/cement-silos.jpg';
 import bridge from '@/assets/editorial/bridge.jpg';
 import turbine from '@/assets/editorial/turbine.jpg';
 import limestone from '@/assets/editorial/limestone-field.jpg';
-import lab from '@/assets/editorial/lab.jpg';
 import pipelines from '@/assets/editorial/pipelines.jpg';
-import greenQuarry from '@/assets/editorial/green-quarry.jpg';
-import quarryWall from '@/assets/editorial/quarry-wall.jpg';
 import gypsum from '@/assets/editorial/gypsum-macro.jpg';
 import iron from '@/assets/editorial/iron-macro.jpg';
-import vessel from '@/assets/editorial/cargo-vessel.jpg';
+const { quarry: source, moltenMetal: steelworks, harbour: port, loading: freight, lab, quarryWater: greenQuarry, quarry: quarryWall, vessel } = novemberMedia;
 
 export const editorialMedia = { source, steelworks, port, freight, ore, cement, bridge, turbine, limestone, lab, pipelines, greenQuarry, quarryWall, gypsum, iron, vessel };
 export const capabilityPhotos = [source, limestone, freight, port, steelworks, lab, pipelines, turbine];
-export const industryPhotos = [cement, ore, bridge, steelworks, turbine, source];
+export const industryPhotos = [cement, steelworks, bridge, novemberMedia.steel, turbine, novemberMedia.crushing];
