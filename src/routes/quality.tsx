@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CTA, PageHero, SectionHead } from "@/components/site/ui";
 import { StepExplorer } from "@/components/site/widgets";
+import { novemberMedia } from '@/lib/november-media';
 
 export const Route = createFileRoute("/quality")({
   head: () => ({
@@ -27,7 +28,7 @@ const steps = [
 function Quality() {
   return (
     <>
-      <PageHero eyebrow="Quality assurance" title={<>Checked at <span className="text-copper">every stage.</span></>} text="A structured process from supplier to delivery, built around the specification you agree with us." />
+      <PageHero eyebrow="Quality assurance" title={<>Checked at <span className="text-copper">every stage.</span></>} text="A structured process from supplier to delivery, built around the specification you agree with us." visual={<img src={novemberMedia.lab} alt="Gloved hand preparing laboratory sample tubes" width={1600} height={1067} className="h-full w-full object-cover" />} />
       <section className="mx-auto max-w-7xl px-6 py-24">
         <SectionHead eyebrow="Our process" title="Explore the quality sequence." className="mb-12" />
         <StepExplorer steps={steps} />

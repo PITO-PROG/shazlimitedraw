@@ -2,20 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, Maximize, Pause, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@tanstack/react-router';
-import port from '@/assets/photos/harbour-logistics.jpg';
-import quarry from '@/assets/photos/marble-quarry.jpg';
+import port from '@/assets/november/harbour-cranes.webp';
+import quarry from '@/assets/november/quarry-haulage.webp';
 import onboard from '@/assets/vessel/crane-side.jpg';
 import { HeroMotion } from './HeroMotion';
-import { sitePhotos } from '@/lib/site-photos';
 import { PhotoViewer } from './PhotoViewer';
 import { QuarryVideo } from './QuarryVideo';
 import { DustLayer } from './MotionSystem';
 import { ResponsiveImage } from './ResponsiveImage';
 
 const slides = [
-  { image: port, alt: 'Container ships and cranes at a harbour at night', label: 'Source to site', title: 'Mineral Supply.', copy: 'Industrial minerals, strategic sourcing and coordinated supply-chain solutions — built around your operational requirements.', to: '/products', action: 'Explore Our Minerals' },
+  { image: port, alt: 'Cargo vessel alongside harbour cranes in daylight', label: 'Source to site', title: 'Mineral Supply.', copy: 'Industrial minerals, strategic sourcing and coordinated supply-chain solutions — built around your operational requirements.', to: '/products', action: 'Explore Our Minerals' },
   { image: onboard, alt: 'Shaz inspector on a vessel hatch with port cranes behind', label: 'On board', title: 'Inspected Before Loading.', copy: 'Our shipper and shipping agent meet the Captain and check every hold for cleanliness before cargo goes aboard.', to: '/logistics', action: 'See How We Ship' },
-  { image: quarry, alt: 'Terraced mineral quarry', label: 'From the earth', title: 'Sourced. Coordinated. Delivered.', copy: 'Connecting mineral sources with industrial operations through strategic trading and coordinated regional logistics.', to: '/logistics', action: 'Explore Our Supply Chain' },
+  { image: quarry, alt: 'Haul truck beside grey quarry stockpiles', label: 'From the earth', title: 'Sourced. Coordinated. Delivered.', copy: 'Connecting mineral sources with industrial operations through strategic trading and coordinated regional logistics.', to: '/logistics', action: 'Explore Our Supply Chain' },
 ] as const;
 
 export function HeroSlideshow() {
@@ -65,6 +64,6 @@ export function HeroSlideshow() {
       <Button size="icon" variant="outline" className="hero-photo-control" aria-label="Explore hero photograph" title="Explore photograph" onClick={() => setPhoto(active)}><Maximize /></Button>
       <span className="sr-only" aria-live={paused || engaged ? 'polite' : 'off'}>{slide.alt}</span>
     </HeroMotion>
-    <PhotoViewer photos={[sitePhotos[7], sitePhotos[0], sitePhotos[8]]} index={photo} onIndexChange={setPhoto} />
+    <PhotoViewer photos={slides.map(item => ({ src: item.image, alt: item.alt, title: item.label, category: 'Supply chain' }))} index={photo} onIndexChange={setPhoto} />
   </div>;
 }

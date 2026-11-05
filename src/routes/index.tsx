@@ -15,7 +15,7 @@ import { CapabilitiesPhoto } from '@/components/site/CapabilitiesPhoto';
 import { ResponsiveImage } from '@/components/site/ResponsiveImage';
 import { editorialMedia, industryPhotos } from '@/lib/editorial-media';
 
-const homePhotos = sitePhotos.map((photo, index) => ({ ...photo, src: ({ 8: editorialMedia.quarryWall, 7: editorialMedia.vessel, 6: editorialMedia.pipelines, 0: editorialMedia.limestone } as Record<number, string>)[index] ?? photo.src }));
+const homePhotos = sitePhotos.map((photo, index) => index === 7 ? { ...photo, src: editorialMedia.vessel, title: 'Bulk sea freight', alt: 'Bulk cargo ship underway on open water' } : photo);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,7 +49,7 @@ function Home() {
 
       <section className="who-section border-y border-border bg-background">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <Reveal><SectionPhoto photo={{ ...sitePhotos[8], src: editorialMedia.quarryWall }} onView={() => setViewing(8)} className="aspect-[5/4]" /></Reveal>
+          <Reveal><SectionPhoto photo={homePhotos[8] ?? sitePhotos[8]} onView={() => setViewing(8)} className="aspect-[5/4]" /></Reveal>
           <div>
             <SectionHead eyebrow="Who we are" title="From mineral sources to regional industry." />
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">Established in Nairobi in 2020, Shaz Ventures connects qualified mineral sources with industrial customers across East Africa.</p>
@@ -89,7 +89,7 @@ function Home() {
             if (!photo) return null;
             return <Reveal key={ind.name} delay={i * 50}>
               <Link to="/industries" className="industry-panel group block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded"><ResponsiveImage src={industryPhotos[i] ?? photo.src} alt={photo.alt} loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" /><span className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded bg-background text-primary"><ArrowUpRight className="h-5 w-5" /></span></div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded"><ResponsiveImage src={industryPhotos[i] ?? photo.src} alt={`${ind.name} industry photographic study`} loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" /><span className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded bg-background text-primary"><ArrowUpRight className="h-5 w-5" /></span></div>
                 <h3 className="mt-5 font-display text-xl font-bold group-hover:text-primary">{ind.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{ind.text}</p>
               </Link>
@@ -102,7 +102,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-6 py-28">
           <SectionHead eyebrow="Regional presence" title="Coordinating supply across East Africa." />
           <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
-            <Reveal><SectionPhoto photo={{ ...sitePhotos[7], src: editorialMedia.vessel }} onView={() => setViewing(7)} className="aspect-[4/3]" /><Link to="/logistics" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">From port to plant <ArrowUpRight className="h-4 w-4" /></Link></Reveal>
+            <Reveal><SectionPhoto photo={homePhotos[7] ?? sitePhotos[7]} onView={() => setViewing(7)} className="aspect-[4/3]" /><Link to="/logistics" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">From port to plant <ArrowUpRight className="h-4 w-4" /></Link></Reveal>
             <RegionMap />
           </div>
         </div>
@@ -111,7 +111,7 @@ function Home() {
       <section className="assurance-section mx-auto grid max-w-7xl gap-6 px-6 py-28 md:grid-cols-2">
         <Reveal>
             <Link to="/quality" className="assurance-panel group block h-full overflow-hidden rounded border border-border bg-card">
-             <div className="aspect-[16/9] overflow-hidden"><ResponsiveImage src={editorialMedia.lab} alt={sitePhotos[9].alt} loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" /></div>
+             <div className="aspect-[16/9] overflow-hidden"><ResponsiveImage src={editorialMedia.lab} alt="Gloved hand preparing laboratory sample tubes" loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" /></div>
             <div className="p-6 md:p-8">
             <p className="eyebrow">Quality assurance</p>
             <h3 className="mt-4 text-3xl font-bold">Sample → verify → inspect → document.</h3>
@@ -126,7 +126,7 @@ function Home() {
         <Reveal delay={150}>
           <Link to="/sustainability" className="assurance-panel group block h-full overflow-hidden rounded border border-border bg-card">
             <div className="aspect-[16/9] overflow-hidden">
-             <ResponsiveImage src={editorialMedia.greenQuarry} alt="Terraced marble quarry landscape" loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" />
+             <ResponsiveImage src={editorialMedia.greenQuarry} alt="Water-filled quarry surrounded by exposed rock and trees" loading="lazy" width={1920} height={1280} className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105" />
             </div>
             <div className="p-6 md:p-8">
               <p className="eyebrow">Sustainability</p>
