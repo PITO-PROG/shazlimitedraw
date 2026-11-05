@@ -610,3 +610,12 @@ main > section:has(form) input[type="file"] { max-width: 100%; }
 .mineral-collection-grid > button:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
 .specimen-tag { background: var(--card); border: 1px solid var(--border); padding: 0.3rem 0.55rem; }
 @media (prefers-reduced-motion: reduce) { .mineral-collection-grid > button:hover img { transform: none; } }
+
+/* Full-colour imagery: no greyscale/luminosity covers, lighter scrims */
+.partner-card img, .partner-card:hover img { filter: none; }
+.page-hero-visual { mix-blend-mode: normal; opacity: 1; }
+:root {
+  --hero-film-scrim: linear-gradient(90deg, oklch(0.26 0.05 255 / 55%), transparent 70%);
+  --stage-scrim: linear-gradient(0deg, oklch(0.26 0.05 255 / 65%), transparent 60%);
+  --hero-shade: oklch(0.26 0.05 255 / 60%);
+}
