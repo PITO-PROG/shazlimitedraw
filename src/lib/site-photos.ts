@@ -1,12 +1,8 @@
-import crystals from '@/assets/photos/clear-crystals.jpg';
 import metallic from '@/assets/photos/metallic-crystals.jpg';
 import texture from '@/assets/photos/geological-texture.jpg';
 import glowing from '@/assets/photos/glowing-coals.jpg';
-import coal from '@/assets/photos/coal-texture.jpg';
 import cement from '@/assets/photos/cement-works.jpg';
-import plant from '@/assets/photos/industrial-plant.jpg';
 import harbour from '@/assets/photos/harbour-logistics.jpg';
-import quarry from '@/assets/photos/marble-quarry.jpg';
 import quartz from '@/assets/photos/quartz-specimen.jpg';
 import v_deck_walk from '@/assets/vessel/deck-walk.jpg';
 import v_hold_ladder from '@/assets/vessel/hold-ladder.jpg';
@@ -99,7 +95,7 @@ export const sitePhotos = [
   { src: novemberMedia.crushing, title: 'Bulk material processing', category: 'Industry', alt: 'Mobile crushing plant working through piles of rock' },
 ] as const;
 
-export type SitePhoto = (typeof sitePhotos)[number];
+export type SitePhoto = { readonly src: string; readonly title: string; readonly category: string; readonly alt: string };
 export function photosForPage(pathname: string): readonly SitePhoto[] {
   if (pathname === '/') return sitePhotos;
   const vessel = sitePhotos.filter(p => p.category === 'Vessel inspection');
